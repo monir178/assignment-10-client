@@ -17,6 +17,9 @@ const Home = () => {
                     <Lottie animationData={animation} loop={true} />
                 </div>
             </div>
+            <div>
+
+            </div>
         </div>
     );
 };
