@@ -10,11 +10,12 @@ const Navbar = () => {
     };
 
     return (
-        <div className="bg-base-300">
+        <div className="bg-base-100 sticky top-0 drop-shadow-lg ">
             <div className="mx-auto px-10">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
-                        <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 flex items-center">
+                            <img className='w-6 h-6 rounded-md me-1' src="https://cdn.dribbble.com/userupload/2448240/file/original-9d958c1a2500b83f7b3f623bb14dfa0f.png?resize=400x0" alt="" />
                             <Link to="/" className="text-gray-700 text-lg font-bold" activeClassName="font-bold">
                                 TECH LEARN
                             </Link>
