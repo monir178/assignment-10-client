@@ -12,7 +12,7 @@ const Main = () => {
         <div className='col-span-3 hidden lg:block md:block '>
           <LeftSideNav></LeftSideNav>
         </div>
-        <div className='lg:col-span-9 col-span-12 md:col-span-9'>
+        <div className='lg:col-span-9 col-span-12 md:col-span-9 mx-auto'>
           <Outlet ></Outlet>
         </div>
       </div>

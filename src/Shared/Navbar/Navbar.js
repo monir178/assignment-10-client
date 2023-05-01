@@ -24,6 +24,39 @@ const Navbar = () => {
                     <div className="hidden md:block">
                         <div className="ml-10 flex items-baseline space-x-4">
                             <NavLink
+                                to="/courses"
+                                style={({ isActive }) => {
+                                    return {
+                                        fontWeight: isActive ? "bold" : "",
+
+                                    };
+                                }}
+                            >
+                                Courses
+                            </NavLink>
+                            <NavLink
+                                to="/blog"
+                                style={({ isActive }) => {
+                                    return {
+                                        fontWeight: isActive ? "bold" : "",
+
+                                    };
+                                }}
+                            >
+                                Blog
+                            </NavLink>
+                            <NavLink
+                                to="/faq"
+                                style={({ isActive }) => {
+                                    return {
+                                        fontWeight: isActive ? "bold" : "",
+
+                                    };
+                                }}
+                            >
+                                FAQ
+                            </NavLink>
+                            <NavLink
                                 to="/"
                                 style={({ isActive }) => {
                                     return {
@@ -56,6 +89,7 @@ const Navbar = () => {
                             >
                                 Register
                             </NavLink>
+
                         </div>
                     </div>
                     <div className="flex items-center md:ml-6">
@@ -82,6 +116,39 @@ const Navbar = () => {
             <div className={`${isHamburgerMenuOpen ? 'block' : 'hidden'} md:hidden`} id="mobile-menu">
                 <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                     <div className="flex flex-col">
+                        <NavLink
+                            to="/courses"
+                            style={({ isActive }) => {
+                                return {
+                                    fontWeight: isActive ? "bold" : "",
+
+                                };
+                            }}
+                        >
+                            Courses
+                        </NavLink>
+                        <NavLink
+                            to="/blog"
+                            style={({ isActive }) => {
+                                return {
+                                    fontWeight: isActive ? "bold" : "",
+
+                                };
+                            }}
+                        >
+                            Blog
+                        </NavLink>
+                        <NavLink
+                            to="/faq"
+                            style={({ isActive }) => {
+                                return {
+                                    fontWeight: isActive ? "bold" : "",
+
+                                };
+                            }}
+                        >
+                            FAQ
+                        </NavLink>
                         <NavLink
                             to="/"
                             style={({ isActive }) => {
