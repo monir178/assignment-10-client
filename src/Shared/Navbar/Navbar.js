@@ -9,6 +9,7 @@ const Navbar = () => {
         setIsHamburgerMenuOpen(!isHamburgerMenuOpen);
     };
 
+
     return (
         <div className="bg-base-100 sticky z-10 top-0 drop-shadow-lg ">
             <div className="mx-auto px-10">

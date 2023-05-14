@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import animation from '../../../src/assets/animation/login.json';
 import Lottie from 'lottie-react';
+import { FaFacebook, FaGithub } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
 const Login = () => {
     return (
         <div className="py-6">
-            <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl justify-center ">
+            <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl justify-center items-center ">
                 <div className="hidden lg:block lg:w-1/2 bg-cover ">
                     <div className='w-full lg:w-4/5 lg:ml-auto h-56  sm:h-96 '>
                         <Lottie animationData={animation} loop={true} />
@@ -31,6 +33,25 @@ const Login = () => {
                             <button className="bg-gray-700 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-600">Login</button>
                         </div>
                     </form>
+
+                    <button className="flex items-center justify-center mt-4 rounded-lg shadow-md hover:bg-gray-100 w-full">
+                        <div className="px-4 py-3 text-2xl">
+                            <FcGoogle></FcGoogle>
+                        </div>
+                        <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Google</h1>
+                    </button>
+                    <button className="flex items-center justify-center mt-4  rounded-lg shadow-md hover:bg-gray-100 w-full">
+                        <div className="px-4 py-3 text-2xl">
+                            <FaGithub></FaGithub>
+                        </div>
+                        <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Github</h1>
+                    </button>
+                    <button className="flex items-center justify-center my-4  rounded-lg shadow-md hover:bg-gray-100 w-full">
+                        <div className="px-4 py-3 text-2xl">
+                            <FaFacebook></FaFacebook>
+                        </div>
+                        <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Facebook</h1>
+                    </button>
                     <div className="mt-4 flex items-center justify-between">
                         <span className="border-b w-1/5 md:w-1/4"></span>
                         <Link to="/register" className="text-xs text-gray-500 uppercase">or sign up</Link>
