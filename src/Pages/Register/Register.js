@@ -42,7 +42,7 @@ const Register = () => {
 
                         <span className="border-b w-1/5 md:w-1/4"></span>
 
-                        <Link to="/login" className="text-xs text-gray-500 uppercase">or Login</Link>
+                        <Link to="/login" className="text-base font-semibold text-blue-700 hover:text-blue-400">or Login</Link>
                         <span className="border-b w-1/5 md:w-1/4"></span>
                     </div>
                 </div>

@@ -19,7 +19,7 @@ const Team = () => {
                     </div>
                 </div>
                 <div className='mt-4 lg:mt-8 w-auto text-left mx-4 lg:mr-8 lg:ms-0  ' data-aos="fade-left">
-                    <h2 className='text-lg lg:text-3xl font-semibold text-sky-800 leading-relaxed  ms-0 mb-8'>Meet Our Experienced and Professional Programming and Tech Tutors</h2>
+                    <h2 className='text-lg lg:text-3xl font-semibold text-sky-800 leading-relaxed  ms-0 mb-8'>Know About Our Experienced and Professional Programming and Tech Tutors</h2>
                     <p className='text-lg font-medium mt-4 mb-8 '>"Learn from our experienced and professional programming and tech tutors. With real-world experience and a passion for teaching, our team is committed to helping you achieve your goals and reach your full potential.</p>
                     <ul className='list-disc list-outside ' >
                         <li className='mb-4 ms-4   text-gray-700 text-base font-semibold'>Our tutors are highly experienced professionals with a deep understanding of programming and tech</li>

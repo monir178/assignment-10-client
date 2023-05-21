@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import animation from '../../../src/assets/animation/login.json';
 import Lottie from 'lottie-react';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Login = () => {
+    const { googleSignIn, user, createUser, signInEmail, logOut, githubSignIn, facebookSignIn } = useContext(AuthContext);
+
+    // const hanldeFacebookSignIn = () => {
+
+    // }
+
     return (
         <div className="py-6">
             <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl justify-center items-center ">
@@ -54,7 +61,7 @@ const Login = () => {
                     </button>
                     <div className="mt-4 flex items-center justify-between">
                         <span className="border-b w-1/5 md:w-1/4"></span>
-                        <Link to="/register" className="text-xs text-gray-500 uppercase">or sign up</Link>
+                        <Link to="/register" className="text-base font-semibold text-blue-700 hover:text-blue-400">or Sign up</Link>
                         <span className="border-b w-1/5 md:w-1/4"></span>
                     </div>
                 </div>

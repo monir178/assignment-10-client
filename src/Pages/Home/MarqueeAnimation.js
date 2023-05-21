@@ -15,7 +15,7 @@ const MarqueeAnimation = () => {
         <div>
             <h1 className='text-lg lg:text-4xl font-semibold text-sky-800 leading-relaxed  ms-0 mb-4 mt-10 text-center'>Our Technology Partners</h1>
             <div>
-                <Marquee direction="right" speed={40} autoFill className='w-full flex items-center justify-center' >
+                <Marquee direction="right" speed={40} autoFill className='w-full flex' >
                     <div className="mr-12 mt-8 mb-4 w-20 ">
                         <img src={img1} alt="" />
                     </div>

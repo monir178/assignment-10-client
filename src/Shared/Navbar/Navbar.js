@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
+import 'react-tooltip/dist/react-tooltip.css'
+import { Tooltip as ReactTooltip } from 'react-tooltip'
+import AuthProvider, { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Navbar = () => {
     const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
+    const { user } = useContext(AuthContext);
 
     const handleHamburgerMenuToggle = () => {
         setIsHamburgerMenuOpen(!isHamburgerMenuOpen);
@@ -79,17 +83,7 @@ const Navbar = () => {
                             >
                                 Login
                             </NavLink>
-                            <NavLink
-                                to="/register"
-                                style={({ isActive }) => {
-                                    return {
-                                        fontWeight: isActive ? "bold" : "",
 
-                                    };
-                                }}
-                            >
-                                Register
-                            </NavLink>
                             <div>
                                 <label className="swap swap-rotate">
                                     <input type="checkbox" />
@@ -101,13 +95,14 @@ const Navbar = () => {
                         </div>
 
                     </div>
+
                     <div className="flex items-center md:ml-6">
-                        <Link><img
-                            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-                            alt="Profile"
-                            className="h-8 w-8 rounded-full"
-                        /></Link>
+                        <Link>
+                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="Profile" className="h-8 w-8 rounded-full" data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} />
+                        </Link>
+                        <ReactTooltip id="my-tooltip" data-tooltip-content="okay" effect="solid" place="bottom" />
                     </div>
+
                     <div className="-mr-2 flex md:hidden">
                         <button
                             onClick={handleHamburgerMenuToggle}
@@ -175,7 +170,7 @@ const Navbar = () => {
                                 };
                             }}
                         >
-                            Header
+                            Home
                         </NavLink>
                         <NavLink
                             to="/login"
@@ -187,17 +182,6 @@ const Navbar = () => {
                             }}
                         >
                             Login
-                        </NavLink>
-                        <NavLink
-                            to="/register"
-                            style={({ isActive }) => {
-                                return {
-                                    fontWeight: isActive ? "bold" : "",
-
-                                };
-                            }}
-                        >
-                            Register
                         </NavLink>
                     </div>
                 </div>
