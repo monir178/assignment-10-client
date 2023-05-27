@@ -5,12 +5,31 @@ import Lottie from 'lottie-react';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 const Login = () => {
-    const { googleSignIn, user, createUser, signInEmail, logOut, githubSignIn, facebookSignIn } = useContext(AuthContext);
+    const { providerLogin } = useContext(AuthContext);
 
-    // const hanldeFacebookSignIn = () => {
+    // Google Sign In Method
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(err => console.error(err));
+    }
 
-    // }
+    //Github Sign In Method
+    const githubSignIn = new GithubAuthProvider();
+    const handleGithubSignIn = () => {
+        providerLogin(githubSignIn)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+            })
+            .catch(err => console.error(err));
+    }
 
     return (
         <div className="py-6">
@@ -41,13 +60,17 @@ const Login = () => {
                         </div>
                     </form>
 
-                    <button className="flex items-center justify-center mt-4 rounded-lg shadow-md hover:bg-gray-100 w-full">
+                    <button
+                        onClick={handleGoogleSignIn}
+                        className="flex items-center justify-center mt-4 rounded-lg shadow-md hover:bg-gray-100 w-full">
                         <div className="px-4 py-3 text-2xl">
                             <FcGoogle></FcGoogle>
                         </div>
                         <h1 className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Google</h1>
                     </button>
-                    <button className="flex items-center justify-center mt-4  rounded-lg shadow-md hover:bg-gray-100 w-full">
+                    <button
+                        onClick={handleGithubSignIn}
+                        className="flex items-center justify-center mt-4  rounded-lg shadow-md hover:bg-gray-100 w-full">
                         <div className="px-4 py-3 text-2xl">
                             <FaGithub></FaGithub>
                         </div>

@@ -3,11 +3,13 @@ import { Link, NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import 'react-tooltip/dist/react-tooltip.css'
 import { Tooltip as ReactTooltip } from 'react-tooltip'
-import AuthProvider, { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import headLogo from '../../assets/images/icon.jpg';
 
 const Navbar = () => {
     const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
     const { user } = useContext(AuthContext);
+    console.log(user);
 
     const handleHamburgerMenuToggle = () => {
         setIsHamburgerMenuOpen(!isHamburgerMenuOpen);
@@ -20,8 +22,8 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <div className="flex-shrink-0 flex items-center">
-                            <img className='w-6 h-6 rounded-md me-1' src="https://cdn.dribbble.com/userupload/2448240/file/original-9d958c1a2500b83f7b3f623bb14dfa0f.png?resize=400x0" alt="" />
-                            <Link to="/" className="text-gray-700 text-lg font-bold">
+                            <img className='w-8 h-8 rounded-full me-1' src={headLogo} alt="" />
+                            <Link to="/" className="px-4 rounded-lg py-1 text-white text-lg font-bold bg-gradient-to-r from-cyan-500 to-blue-700">
                                 TECH LEARN
                             </Link>
                         </div>
@@ -98,9 +100,16 @@ const Navbar = () => {
 
                     <div className="flex items-center md:ml-6">
                         <Link>
-                            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="Profile" className="h-8 w-8 rounded-full" data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} />
+                            {
+                                user?.uid ?
+                                    <img src={user?.photoURL} alt="Profile" className="h-8 w-8 rounded-full" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} />
+                                    :
+                                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" alt="Profile" className="h-8 w-8 rounded-full" />
+
+                            }
+
                         </Link>
-                        <ReactTooltip id="my-tooltip" data-tooltip-content="okay" effect="solid" place="bottom" />
+                        <ReactTooltip id="my-tooltip" data-tooltip-content={user?.displayName} effect="solid" place="bottom" />
                     </div>
 
                     <div className="-mr-2 flex md:hidden">

@@ -1,45 +1,51 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import app from '../../firebase/firebase.config';
-import { FacebookAuthProvider, GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 
 export const AuthContext = createContext();
 
 const auth = getAuth(app)
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState({
-        displayName: "Chesra Miya"
-    })
-    const googleProvider = new GoogleAuthProvider();
-    const googleSignIn = () => {
-        return signInWithPopup(auth, googleProvider);
+    const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true);
+
+    const providerLogin = (provider) => {
+        setLoading(true);
+        return signInWithPopup(auth, provider);
     }
 
-    const githubProvider = new GithubAuthProvider();
-    const githubSignIn = () => {
-        return signInWithPopup(auth, githubProvider);
-    }
-
-    const facebookProvider = new FacebookAuthProvider();
-    const facebookSignIn = () => {
-        return signInWithPopup(auth, facebookProvider);
-    }
 
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const signInEmail = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            console.log("User Inside state changed", currentUser);
+            if (currentUser === null || currentUser.emailVerified) {
+                setUser(currentUser)
+            }
+            setLoading(false);
+        });
+        return () => {
+            unsubscribe();
+        }
+    }, [])
 
 
-    const authInfo = { googleSignIn, user, createUser, signInEmail, logOut, githubSignIn, facebookSignIn }
+    const authInfo = { user, createUser, signInEmail, logOut, providerLogin, loading, setLoading, setUser }
 
     return (
         <AuthContext.Provider value={authInfo}>

@@ -3,7 +3,9 @@ import backgroundImage from "../../assets/images/background.jpg";
 import Team from './Team';
 import { Link } from 'react-router-dom';
 
+
 const Header = () => {
+
     return (
         <div>
             <div className="hero min-h-screen shadow-lg shadow-gray-400" style={{ backgroundImage: `url(${backgroundImage})` }}>

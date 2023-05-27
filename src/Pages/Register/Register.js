@@ -12,7 +12,7 @@ const Register = () => {
                     </div>
                 </div>
                 <div className="w-full p-8 lg:w-1/2">
-                    <p className="text-xl text-gray-600 text-center">Welcome back!</p>
+                    <p className="text-xl text-gray-600 text-center">Register Here!</p>
                     <form>
                         <div className="mt-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2">Your Full Name</label>
