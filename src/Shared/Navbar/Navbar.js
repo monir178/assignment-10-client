@@ -8,13 +8,22 @@ import headLogo from '../../assets/images/icon.jpg';
 
 const Navbar = () => {
     const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     console.log(user);
 
     const handleHamburgerMenuToggle = () => {
         setIsHamburgerMenuOpen(!isHamburgerMenuOpen);
     };
 
+
+    const handleLogOut = async () => {
+        try {
+            await logOut();
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <div className="bg-base-100 sticky z-10 top-0 drop-shadow-lg ">
@@ -74,17 +83,24 @@ const Navbar = () => {
                             >
                                 Home
                             </NavLink>
-                            <NavLink
-                                to="/login"
-                                style={({ isActive }) => {
-                                    return {
-                                        fontWeight: isActive ? "bold" : "",
+                            {
+                                user?.uid ?
+                                    <button onClick={handleLogOut} className="btn btn-error btn-sm ring-2 ring-red-500/50">Logout</button>
+                                    :
 
-                                    };
-                                }}
-                            >
-                                Login
-                            </NavLink>
+                                    <NavLink
+                                        className="btn btn-success btn-sm ring-2 ring-green-500/50"
+                                        to="/login"
+                                        style={({ isActive }) => {
+                                            return {
+                                                fontWeight: isActive ? "bold" : "",
+
+                                            };
+                                        }}
+                                    >
+                                        Login
+                                    </NavLink>
+                            }
 
                             <div>
                                 <label className="swap swap-rotate">

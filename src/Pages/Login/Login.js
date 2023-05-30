@@ -1,13 +1,20 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import animation from '../../../src/assets/animation/login.json';
 import Lottie from 'lottie-react';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { useState } from 'react';
+import Swal from 'sweetalert2'
+
 const Login = () => {
-    const { providerLogin } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const { providerLogin, setLoading, setUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     // Google Sign In Method
     const googleProvider = new GoogleAuthProvider();
@@ -15,7 +22,27 @@ const Login = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
+                setUser(user);
                 console.log(user);
+
+                setError('');
+                if (user?.emailVerified) {
+                    navigate(from, { replace: true })
+                    Swal.fire({
+                        position: 'top',
+                        icon: 'success',
+                        title: 'Logged In Successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+                else {
+                    Swal.fire(
+                        'No User Found',
+                        'Your Email is not Verified',
+                        'question'
+                    )
+                }
             })
             .catch(err => console.error(err));
     }
@@ -24,9 +51,28 @@ const Login = () => {
     const githubSignIn = new GithubAuthProvider();
     const handleGithubSignIn = () => {
         providerLogin(githubSignIn)
-            .then(res => {
-                const user = res.user;
+            .then(result => {
+                const user = result.user;
+                setUser(user);
                 console.log(user);
+                setError('');
+                if (user?.uid) {
+                    navigate(from, { replace: true })
+                    Swal.fire({
+                        position: 'top',
+                        icon: 'success',
+                        title: 'Logged In Successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+                else {
+                    Swal.fire(
+                        'No User Found',
+                        'Your Email is not Verified',
+                        'question'
+                    )
+                }
             })
             .catch(err => console.error(err));
     }
