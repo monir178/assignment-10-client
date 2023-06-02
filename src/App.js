@@ -3,14 +3,16 @@ import { RouterProvider } from 'react-router-dom';
 import './App.css';
 import { routes } from './Routes/Route/Routes';
 
-
 function App() {
+
   return (
-    <div className="max-w-[1980px] mx-auto" style={{ fontFamily: 'Poppins, sans-serif' }} >
+
+    <div data-theme="garden" className=" max-w-[1980px] mx-auto" style={{ fontFamily: 'Poppins, sans-serif' }} >
 
       <RouterProvider router={routes}>
       </RouterProvider>
     </div>
+
   );
 }
 
