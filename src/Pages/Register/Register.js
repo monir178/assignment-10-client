@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import Swal from 'sweetalert2';
 const Register = () => {
     const [error, setError] = useState('');
-    // const [accepted, setAccepted] = useState(false);
+
     const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
     const handleSubmit = event => {
@@ -21,28 +21,57 @@ const Register = () => {
 
 
         if (password === confirmPassword) {
+
+            //Create Account
             createUser(email, password)
                 .then(result => {
                     const user = result.user;
                     console.log(user);
                     setError('');
                     form.reset();
+                    handleUpdateUserProfile();
+                    handleEmailVerification();
+
                     Swal.fire({
                         position: 'top',
                         icon: 'success',
-                        title: 'Registration Successful',
+                        title: 'Registration Successful. Check your email for verification',
                         showConfirmButton: false,
-                        timer: 1500
+                        timer: 3000
                     });
                 })
                 .catch(error => {
                     console.error(error);
                     setError(error.message);
+                    Swal.fire(error.message);
                 });
         } else {
             setError('Passwords do not match');
         }
     }
+
+    //Update user profile
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => {
+                console.log("user updated");
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+    }
+
+    //Email Verification
+    const handleEmailVerification = () => {
+        verifyEmail()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
 
 
 
@@ -62,8 +91,9 @@ const Register = () => {
                             <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" name="name" required />
                         </div>
                         <div className="mt-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2">Your Photo URL</label>
-                            <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" name="photoURL" />
+                            <label className="block text-gray-700 text-sm font-bold mb-2">Upload Your Photo </label>
+                            <input type="file" className="file-input file-input-md file-input-bordered w-full " name="photoURL" />
+                            {/* <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" name="photoURL" /> */}
                         </div>
                         <div className="mt-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2">Email Address</label>

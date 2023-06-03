@@ -22,38 +22,30 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+        console.log(email, password)
 
-        let user = null;
-        if (user?.emailVerified) {
-            signInEmail(email, password)
-                .then(result => {
-                    user = result.user;
-                    console.log(user);
-                    form.reset();
-                    setError('');
-                    navigate(from, { replace: true });
-                    Swal.fire({
-                        position: 'top',
-                        icon: 'success',
-                        title: 'Logged In Successfully',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                })
-                .catch(err => {
-                    console.error(err);
-                    setError(err.message);
-                })
-                .finally(() => {
-                    setLoading(false);
-                });
-        } else {
-            Swal.fire(
-                'No User Found',
-                'Your Email is not Verified',
-                'question'
-            );
-        }
+        signInEmail(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+                setError('');
+                if (user?.emailVerified) {
+                    navigate(from, { replace: true })
+                }
+                else {
+                    Swal.fire("Your email is not verified. Please check your email")
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                setError(error.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
+
+
     };
 
     // Google Sign In Method
@@ -156,6 +148,7 @@ const Login = () => {
                 </div>
                 <div className="w-full p-8 lg:w-1/2">
                     <p className="text-xl text-gray-600 text-center">Welcome back!</p>
+
 
 
                     <form onSubmit={handleSubmit}>
