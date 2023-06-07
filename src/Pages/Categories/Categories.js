@@ -1,14 +1,14 @@
-import React from 'react';
-import LeftSideNav from '../../Shared/LeftSideNav/LeftSideNav';
+import React, { useState, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import CourseCard from '../CourseCard/CourseCard';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import LeftSideNav from '../../Shared/LeftSideNav/LeftSideNav';
 
-const Courses = () => {
-    const allCourses = useLoaderData();
+
+
+
+const Categories = () => {
+    const categoryCourse = useLoaderData();
     const [isLoading, setIsLoading] = useState(true);
-    // console.log(allCourses);
 
     useEffect(() => {
         // Simulating a delay for fetching data from the server
@@ -49,39 +49,29 @@ const Courses = () => {
             </div>
         );
     };
+
     return (
-
         <>
-            {
-                isLoading ? (
-                    <LoadingSpinner></LoadingSpinner>
-                ) :
-                    (
-                        <div className='grid grid-cols-12  mt-0'>
-                            <div className='col-span-3 hidden lg:block md:block  '>
-                                <LeftSideNav></LeftSideNav>
-                            </div>
-                            <div className='lg:col-span-9 col-span-12 md:col-span-9 mx-auto   w-full'>
-
-                                <h2 className='text-center font-bold text-2xl  mb-8 text-gray-500'>All Courses</h2>
-
-                                <div data-aos="fade-out" className='grid grid-cols-1  lg:grid-cols-2 2xl:grid-cols-3 gap-4'>
-
-                                    {
-                                        allCourses.map(course => <CourseCard
-                                            key={course._id}
-                                            course={course}
-                                        >
-                                        </CourseCard>)
-                                    }
-                                </div>
-                            </div>
+            {isLoading ? (
+                <LoadingSpinner />
+            ) : (
+                <div className="grid grid-cols-12">
+                    <div className="col-span-3 hidden lg:block md:block">
+                        <LeftSideNav />
+                    </div>
+                    {/* Right side */}
+                    <div className="lg:col-span-9 col-span-12 md:col-span-9 mx-auto w-full">
+                        <p className='text-center font-bold text-2xl text-gray-500 mb-8'>This category contains {categoryCourse.length} courses</p>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4">
+                            {categoryCourse.map((course) => (
+                                <CourseCard key={course._id} course={course} />
+                            ))}
                         </div>
-                    )
-            }
+                    </div>
+                </div>
+            )}
         </>
-
     );
 };
 
-export default Courses;
+export default Categories;

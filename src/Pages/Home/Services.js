@@ -4,7 +4,7 @@ import Lottie from 'lottie-react';
 const Services = () => {
     return (
         <div>
-            <div className='flex flex-col lg:flex-row justify-between lg:items-center my-10 shadow-xl py-8 bg-gradient-to-r from-gray-300 to-blue-200'>
+            <div className='flex flex-col lg:flex-row justify-between lg:items-center my-10 shadow-xl py-8 bg-base-200'>
                 <div className='lg:w-full block lg:hidden'>
                     <div className='relative' style={{ paddingTop: '55%' }}>
                         <div className='absolute inset-0 '>

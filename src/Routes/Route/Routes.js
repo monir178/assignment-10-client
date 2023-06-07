@@ -7,7 +7,8 @@ import Courses from "../../Pages/Courses/Courses";
 import Faq from "../../Pages/FAQ/Faq";
 import Blog from "../../Pages/Blog/Blog";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Categories from "../../Pages/Categories/Categories";
+import CourseDetails from "../../Pages/CourseDetails/CourseDetails";
 
 export const routes = createBrowserRouter([
     {
@@ -34,15 +35,27 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
-                element: <Courses></Courses>
+                element: <Courses></Courses>,
+                loader: () => fetch('https://assignment-10-server-seven-lime.vercel.app/courses')
             },
+            {
+                path: '/categories/:id',
+                element: <Categories></Categories>,
+                loader: ({ params }) => fetch(`https://assignment-10-server-seven-lime.vercel.app/categories/${params.id}`)
+            },
+            {
+                path: '/courses/:id',
+                element: <CourseDetails></CourseDetails>,
+                loader: ({ params }) => fetch(`https://assignment-10-server-seven-lime.vercel.app/courses/${params.id}`)
+            },
+
             {
                 path: '/faq',
                 element: <Faq></Faq>
             },
             {
                 path: '/blog',
-                element: <PrivateRoute><Blog></Blog></PrivateRoute>
+                element: <Blog></Blog>
             },
         ]
     }

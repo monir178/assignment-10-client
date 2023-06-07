@@ -64,7 +64,6 @@ const Register = () => {
                 console.error(error);
             })
     }
-
     //Email Verification
     const handleEmailVerification = () => {
         verifyEmail()
@@ -77,7 +76,7 @@ const Register = () => {
 
     return (
         <div className="py-6">
-            <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl justify-center items-center">
+            <div className="flex bg-base-200 rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl justify-center items-center" data-aos="fade-in">
                 <div className="hidden lg:block lg:w-1/2 bg-cover">
                     <div className='w-full lg:w-4/5 lg:ml-auto h-56  sm:h-96'>
                         <Lottie animationData={animation} loop={true} />

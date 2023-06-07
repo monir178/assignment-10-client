@@ -4,8 +4,8 @@ import 'daisyui/dist/full.css';
 
 const Blog = () => {
     return (
-        <div className="bg-gradient-to-b from-gray-100 to-white py-8 px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="bg-base-200 py-8 px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="zoom-in">
                 <div className=" rounded-lg shadow-lg p-8 bg-gradient-to-r from-gray-300 to-blue-200">
                     <h3 className="text-lg lg:text-2xl font-semibold text-sky-800 leading-relaxed mb-4">Question 1: What is CORS?</h3>
                     <p className="text-gray-800">

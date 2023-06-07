@@ -9,7 +9,7 @@ import MarqueeAnimation from './MarqueeAnimation';
 const Team = () => {
     return (
         <div>
-            <div className='flex flex-col lg:flex-row justify-between lg:items-center' >
+            <div className='flex flex-col lg:flex-row justify-between lg:items-center bg-base-200 mt-4' >
                 <div className='lg:w-full'>
                     <div className='relative' style={{ paddingTop: '55%' }}>
                         <div className='absolute inset-0 '>

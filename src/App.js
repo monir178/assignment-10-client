@@ -7,7 +7,7 @@ function App() {
 
   return (
 
-    <div data-theme="garden" className=" max-w-[1980px] mx-auto" style={{ fontFamily: 'Poppins, sans-serif' }} >
+    <div className=" max-w-[1980px] mx-auto" style={{ fontFamily: 'Poppins, sans-serif' }} >
 
       <RouterProvider router={routes}>
       </RouterProvider>
