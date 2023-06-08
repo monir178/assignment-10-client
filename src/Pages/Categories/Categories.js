@@ -14,7 +14,7 @@ const Categories = () => {
         // Simulating a delay for fetching data from the server
         const delay = setTimeout(() => {
             setIsLoading(false);
-        },);
+        }, 500);
 
         // Cleanup function to clear the timeout when component unmounts
         return () => clearTimeout(delay);

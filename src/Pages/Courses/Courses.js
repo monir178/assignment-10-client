@@ -8,13 +8,13 @@ import { useEffect } from 'react';
 const Courses = () => {
     const allCourses = useLoaderData();
     const [isLoading, setIsLoading] = useState(true);
-    // console.log(allCourses);
+    console.log(allCourses);
 
     useEffect(() => {
         // Simulating a delay for fetching data from the server
         const delay = setTimeout(() => {
             setIsLoading(false);
-        },);
+        }, 500);
 
         // Cleanup function to clear the timeout when component unmounts
         return () => clearTimeout(delay);
@@ -61,11 +61,13 @@ const Courses = () => {
                             <div className='col-span-3 hidden lg:block md:block  '>
                                 <LeftSideNav></LeftSideNav>
                             </div>
+
+                            {/* Right side */}
                             <div className='lg:col-span-9 col-span-12 md:col-span-9 mx-auto   w-full'>
 
-                                <h2 className='text-center font-bold text-2xl  mb-8 text-gray-500'>All Courses</h2>
+                                <h2 className='text-center font-bold text-2xl mt-4  mb-8 text-gray-500'>All Courses</h2>
 
-                                <div data-aos="fade-out" className='grid grid-cols-1  lg:grid-cols-2 2xl:grid-cols-3 gap-4'>
+                                <div data-aos="fade-out" className='grid grid-cols-1  lg:grid-cols-2 2xl:grid-cols-3 gap-4 '>
 
                                     {
                                         allCourses.map(course => <CourseCard
