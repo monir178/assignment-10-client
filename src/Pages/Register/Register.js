@@ -83,32 +83,32 @@ const Register = () => {
                     </div>
                 </div>
                 <div className="w-full p-8 lg:w-1/2">
-                    <p className="text-xl text-gray-600 text-center">Register Here!</p>
+                    <p className="text-xl font-semibold text-center">Register Here!</p>
                     <form onSubmit={handleSubmit}>
                         <div className="mt-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2">Your Full Name</label>
-                            <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" name="name" required />
+                            <label className="block text-sm font-bold mb-2">Your Full Name</label>
+                            <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" name="name" placeholder='your full name' required />
                         </div>
                         <div className="mt-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2">Upload Your Photo </label>
+                            <label className="block  text-sm font-bold mb-2">Upload Your Photo </label>
                             <input type="file" className="file-input file-input-md file-input-bordered w-full " name="photoURL" />
                             {/* <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="text" name="photoURL" /> */}
                         </div>
                         <div className="mt-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
-                            <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="email" name="email" required />
+                            <label className="block  text-sm font-bold mb-2">Email Address</label>
+                            <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="email" name="email" placeholder='email' required />
                         </div>
                         <div className="mt-4">
                             <div className="flex justify-between">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                                <label className="block  text-sm font-bold mb-2">Password</label>
                             </div>
-                            <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" name="password" required />
+                            <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" name="password" placeholder='password' required />
                         </div>
                         <div className="mt-4">
                             <div className="flex justify-between">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">Confirm Password</label>
+                                <label className="block  text-sm font-bold mb-2">Confirm Password</label>
                             </div>
-                            <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" name="confirm" required />
+                            <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" name="confirm" placeholder='confirm password' required />
                         </div>
                         <p className='text-red-500'>{error}
                         </p>

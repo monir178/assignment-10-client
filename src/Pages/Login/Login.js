@@ -157,26 +157,27 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="w-full p-8 lg:w-1/2">
-                    <p className="text-xl text-gray-600 text-center">Welcome back!</p>
+                    <p className="text-xl font-semibold text-center">Welcome back!</p>
 
 
 
                     <form onSubmit={handleSubmit}>
                         <div className="mt-4">
-                            <label className="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                            <label className="block  text-sm font-bold mb-2">Email Address</label>
                             <input
                                 onBlur={event => setUserEmail(event.target.value)}
                                 className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                                 type="email"
                                 name="email"
-                                id="email" />
+                                id="email"
+                                placeholder='email' />
                         </div>
                         <div className="mt-4">
                             <div className="flex justify-between">
-                                <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                                <label className="block  text-sm font-bold mb-2">Password</label>
 
                             </div>
-                            <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" name="password" required />
+                            <input className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none" type="password" name="password" placeholder='password' required />
                         </div>
                         <p className='text-red-500'>{error}</p>
                         <div className="mt-8">
