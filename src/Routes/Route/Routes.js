@@ -51,8 +51,9 @@ export const routes = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://assignment-10-server-seven-lime.vercel.app/courses/${params.id}`)
             },
             {
-                path: '/checkout/',
+                path: '/checkout/:id',
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
+                loader: ({ params }) => fetch(`https://assignment-10-server-seven-lime.vercel.app/checkout/${params.id}`)
 
             },
 

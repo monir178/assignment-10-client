@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 
 const CourseDetails = () => {
     const courseInfo = useLoaderData();
-    const { author, title, details } = courseInfo;
+    const { author, title, details, _id } = courseInfo;
 
     return (
         <>
@@ -73,7 +73,7 @@ const CourseDetails = () => {
                     </div>
                     <p className="mb-6">{details}</p>
                     <div className="flex justify-end">
-                        <Link to='/checkout'>
+                        <Link to={`/checkout/${_id}`}>
                             <button className="px-12 py-4 rounded-lg text-white text-xl font-bold bg-gradient-to-r from-cyan-500 to-blue-700">
                                 Enroll Now
                             </button>
