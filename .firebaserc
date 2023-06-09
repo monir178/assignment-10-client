@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "tech-learn-client"
-  }
+    "default": "tech-learn-client",
+    "firebase hosting:disable": "tech-learn-client"
+  },
+  "targets": {},
+  "etags": {}
 }
